@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "abrazo-encyclopedia-mcp",
+      "version": "0.1.0",
+      "title": "ABRAZO · Encyclopedia of Dynamics"
+    },
+    "tools": [
+      {
+        "name": "search_encyclopedia",
+        "title": "Search encyclopedia",
+        "description": "Full-text search across the encyclopedia: disorder names, summaries, sections, criteria, relationship dynamics, and the FAQ. Returns the best-matching disorders and questions for a query.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 2,
+              "description": "Search terms, e.g. 'miedo al abandono', 'límites', 'gaslighting'."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 25,
+              "default": 8,
+              "description": "Max results to return (default 8)."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_disorders",
+        "title": "List disorders",
+        "description": "List every mental-health disorder covered by the encyclopedia, with its id, name, short name, clinical level and one-line summary. Use the id with get_disorder for full detail.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_disorder",
+        "title": "Get disorder detail",
+        "description": "Get the full encyclopedia entry for one disorder by its id (from list_disorders): clinical definition, neurobiology, DSM-5 criteria, relationship dynamics across contexts, and self-care guidance.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Disorder id, e.g. 'tlp', 'tept-c', 'bipolar' (from list_disorders)."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_faqs",
+        "title": "List FAQs",
+        "description": "List the encyclopedia's frequently-asked questions and answers about relationships and mental health, grouped by category (boundaries, is-it-me, manipulation, asking for help, etc.). Optionally filter by a category id.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Optional category id to filter by, e.g. 'limites', 'manipulacion' (omit for all)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

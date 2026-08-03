@@ -1,0 +1,168 @@
+import type { Translations } from "../types";
+
+type Extras = Required<Pick<Translations, "clinical" | "resources" | "news" | "a11y">> & {
+  nav: Pick<Translations["nav"], "clinical" | "resources" | "news">;
+};
+
+export const extrasEn: Extras = {
+  nav: { clinical: "Clinical", resources: "Resources", news: "News" },
+  clinical: {
+    title: "A clinical look at BPD",
+    subtitle: "What the evidence says, told with care",
+    intro:
+      "This section gathers clinical information so you can understand what is happening, without diagnosing anyone. Knowing the map does not replace a professional, but it helps to release guilt and choose more calmly.",
+    dsmTitle: "DSM-5 criteria (a human summary)",
+    dsmIntro:
+      "The DSM-5 lists nine traits. Five or more, persistent and across contexts, are usually needed to talk about BPD.",
+    dsmCriteria: [
+      { n: "01", title: "Intense fear of abandonment", desc: "Frantic efforts to avoid real or imagined separations, even from minor cues." },
+      { n: "02", title: "Unstable, intense relationships", desc: "Swings between idealization and devaluation, sometimes in the same day." },
+      { n: "03", title: "Unstable identity", desc: "Self-image that shifts: tastes, values, plans, roles." },
+      { n: "04", title: "Harmful impulsivity", desc: "In at least two areas: spending, sex, substances, food, driving, binges." },
+      { n: "05", title: "Recurrent suicidal or self-harming behavior", desc: "Threats, gestures or self-harm that surface mostly in relational crises." },
+      { n: "06", title: "Affective instability", desc: "Intense episodes of sadness, anxiety or irritability lasting hours, rarely days." },
+      { n: "07", title: "Chronic feelings of emptiness", desc: "An inner hole that noise, people or substances try to cover." },
+      { n: "08", title: "Inappropriate or hard-to-control anger", desc: "Disproportionate outbursts, bitter sarcasm, frequent fights." },
+      { n: "09", title: "Stress-related paranoid ideation or dissociation", desc: "Transient sense that no one can be trusted, or of being outside the body." },
+    ],
+    dsmNote:
+      "Having some of these traits does not mean having BPD. Everyone lives moments like these to varying degrees. Only a professional can diagnose.",
+    originTitle: "Where it comes from",
+    originIntro: "BPD does not have a single cause. It is a crossroad between biology, history and environment.",
+    originPoints: [
+      { title: "Genetics and temperament", desc: "Heritability estimated 40–60 %. A more reactive nervous system from childhood." },
+      { title: "Neurobiology", desc: "More active amygdala under emotional cues, prefrontal cortex with weaker regulatory capacity." },
+      { title: "Trauma and invalidating environment", desc: "Up to 70 % of cases report early experiences of abuse, neglect or chronic invalidation." },
+      { title: "Insecure attachment", desc: "Anxious or disorganized styles are more frequent; the body learned that bonds were unpredictable." },
+    ],
+    diffTitle: "Don't confuse it with…",
+    diffIntro: "Some conditions look like BPD but have a different root, rhythm and treatment.",
+    diffItems: [
+      { name: "Bipolar disorder", desc: "Bipolar shows mood episodes lasting days or weeks. BPD shifts in hours and is usually relationally triggered. Mania/hypomania does not appear in BPD." },
+      { name: "Complex PTSD (cPTSD)", desc: "Shares trauma wounds, but cPTSD has more marked flashbacks, hypervigilance and avoidance. In BPD, identity instability is central." },
+      { name: "ADHD", desc: "ADHD impulsivity comes from executive deficit. In BPD it comes from emotional dysregulation and fear of abandonment." },
+      { name: "Major depression", desc: "Sadness in depression is persistent and less context-bound. In BPD it is reactive, intense and softens when the bond feels safe." },
+      { name: "Narcissistic disorder", desc: "Both share unstable self-esteem, but narcissism defends a grandiose image; BPD often feels unworthy and empty." },
+      { name: "Autism spectrum", desc: "Some social difficulties overlap, but autism does not imply rapid affective swings or intense fear of abandonment." },
+    ],
+    neuroTitle: "The brain behind the intensity",
+    neuroIntro:
+      "It's not a 'difficult personality': it's a nervous system that processes the world at another volume. That excuses no harmful behavior, but it helps to understand why it happens — and why you can't simply 'decide' to calm down.",
+    neuroPoints: [
+      { title: "Alarm on", desc: "The amygdala — the fear center — reacts to neutral social cues as if they were threats. A BPD brain activates at the 'rejection' of a glance that just passes by." },
+      { title: "Slow brake", desc: "The prefrontal cortex, which regulates and calms, kicks in later and with more effort. The result: acting impulsively once the amygdala fires, before the brake connects." },
+      { title: "Rejection as physical pain", desc: "Imaging studies show social exclusion activates the same networks in BPD as physical pain. That's why it 'feels' like a real wound, not a whim." },
+      { title: "Good news: the brain changes", desc: "Repeated treatment — especially DBT — strengthens the regulation pathways. With practice, the brake connects sooner and the alarm recalibrates. Neuroplasticity is on your side." },
+    ],
+    comorbidTitle: "When other things co-occur",
+    comorbidIntro:
+      "BPD rarely travels alone. Knowing this prevents surprises and explains why recovery can look slower: it's not that it isn't working — several pieces are in play.",
+    comorbidPoints: [
+      { title: "Depression and anxiety", desc: "The most common companions. BPD's sadness and fear ride on top of theirs; they're treated together, not one after the other." },
+      { title: "PTSD and trauma", desc: "Many people with BPD carry trauma histories. Complex PTSD shares the wounds: flashbacks, hypervigilance, difficulty trusting. Treatment integrates both." },
+      { title: "Substance use", desc: "Alcohol and other substances are sometimes used as 'anesthesia' for emotional pain. It's an attempt to regulate without tools — addressed without blame in treatment." },
+      { title: "ADHD and bipolarity", desc: "When they co-exist, the cross-diagnosis gets complex. A specialist untangles which impulse comes from where, because each piece has its own treatment." },
+    ],
+    improvementTitle: "Signs that something is improving",
+    improvementIntro:
+      "Recovery isn't linear: there are gains and setbacks. These are real signs that treatment (or the bond) is working — to look at them with hope, without measuring each day.",
+    improvementList: [
+      "Crises are less frequent or shorter: the same storm, lower waves.",
+      "A pause appears between impulse and action: first feel, then decide.",
+      "They can name what they feel ('I'm in a wave') instead of just acting it out.",
+      "They ask for help or step back to regulate instead of attacking: the traffic light works.",
+      "They apologize and repair when the bond is damaged, without drowning in guilt.",
+      "They tolerate disagreement without 'not agreeing' meaning 'you don't love me'.",
+      "They remember the good facts of the relationship even on bad days.",
+    ],
+    dbtTitle: "Dialectical Behavior Therapy (DBT)",
+    dbtIntro: "DBT, developed by Marsha Linehan, is today the most evidence-backed treatment for BPD. It works in four practical modules.",
+    dbtModules: [
+      { name: "Mindfulness", desc: "Observe what happens inside without fighting it.", example: "Notice 'I am feeling rage' instead of acting it out." },
+      { name: "Distress tolerance", desc: "Survive crises without making things worse.", example: "TIPP skill: cold water on the face, brief exercise, slow breathing, muscle relaxation." },
+      { name: "Emotion regulation", desc: "Identify, name and modulate intense emotions.", example: "Emotion log: name · intensity 0-10 · trigger · what soothed it." },
+      { name: "Interpersonal effectiveness", desc: "Ask for what you need without destroying the bond or yourself.", example: "DEAR MAN: describe, express, assert, reinforce, mindful, appear confident, negotiate." },
+    ],
+    selfcareTitle: "Practical self-care (for the person with BPD)",
+    selfcareItems: [
+      { title: "Written safety plan", desc: "Five people to text, three soothing places, two crisis lines. On your phone, reachable in under ten seconds." },
+      { title: "Trigger map", desc: "Personal list of what sets off the wave: time of day, hunger, sleep, certain phrases, certain screens." },
+      { title: "Regulation kit", desc: "Physical objects that bring the body back: ice, essential oil, weighted blanket, anchor song." },
+      { title: "Sleep hygiene", desc: "Poor sleep multiplies emotional intensity. It is treatment, not a luxury." },
+    ],
+    familyTitle: "For families and close people",
+    familyDo: [
+      "Validate the emotion even if you don't share the behavior: 'I see this hurts you'.",
+      "Learn about BPD together: it reduces the 'they do it on purpose'.",
+      "Take care of yourself too: caregiver burnout helps no one.",
+      "Keep stable routines: predictability calms the nervous system.",
+    ],
+    familyDont: [
+      "Invalidating phrases: 'it's not that bad', 'stop dramatizing'.",
+      "Threatening to leave mid-crisis: it confirms the abandonment fear.",
+      "Owning their recovery as your job: it is their process, you accompany.",
+      "Arguing when the body is at 9/10: bring it down first, talk later.",
+    ],
+    recoveryTitle: "Recovery is real",
+    recoveryText:
+      "The strongest longitudinal studies (Zanarini, Gunderson) show that around 50 % of people with BPD no longer meet diagnostic criteria after ten years of follow-up, and many more live with much more manageable symptoms. Emotional intensity, well accompanied, becomes sensitivity, depth and empathy.",
+    disclaimer: "This content is informative. It does not diagnose, does not replace a mental-health professional, and should not be used to label anyone.",
+  },
+  resources: {
+    title: "Where to ask for help",
+    subtitle: "Barcelona, Spain and the world",
+    intro: "If at any point this gets too big, you are not alone. Here are places with real people waiting for a call, an email or a visit.",
+    bcnTitle: "Barcelona",
+    bcnItems: [
+      { name: "Centre LGTBI Barcelona", desc: "Public space with psychological, legal and social support.", contact: "C/ Comte Borrell 22 · 93 320 27 17 · centrelgtbi@bcn.cat" },
+      { name: "Teléfono de la Esperanza Catalunya", desc: "24/7 listening line for emotional crisis and loneliness.", contact: "93 414 48 48" },
+      { name: "ACAI-TLP", desc: "Catalan association for help and research on BPD. Groups for families and people with BPD.", contact: "acaitlp.org" },
+      { name: "Sant Pere Claver · BPD Day Hospital", desc: "Specialized care for personality disorders in Barcelona.", contact: "santpereclaver.org" },
+    ],
+    spainTitle: "Spain",
+    spainItems: [
+      { name: "024 · Suicide-behavior helpline", desc: "Free, confidential 24/7 service from the Ministry of Health.", contact: "Dial 024" },
+      { name: "Teléfono de la Esperanza", desc: "Emotional listening across Spain.", contact: "717 003 717" },
+      { name: "Rainbow line (FELGTBI+)", desc: "Specific support for LGBTI+ people.", contact: "028" },
+      { name: "ACAI-TP", desc: "Federation of personality-disorder associations in Spain.", contact: "acai-tp.org" },
+    ],
+    worldTitle: "World",
+    worldIntro: "If you are reading from outside Spain, these are reliable starting points by region.",
+    worldItems: [
+      { region: "Global", name: "ILGA World", desc: "International federation with directory of organizations by country.", url: "ilga.org" },
+      { region: "Global", name: "WHO · Mental health", desc: "Official resources and guidelines from the World Health Organization.", url: "who.int/health-topics/mental-health" },
+      { region: "USA / Canada", name: "The Trevor Project", desc: "24/7 crisis support for LGBTQ+ youth.", url: "thetrevorproject.org" },
+      { region: "USA", name: "NEABPD", desc: "National Education Alliance for Borderline Personality Disorder.", url: "borderlinepersonalitydisorder.org" },
+      { region: "UK", name: "Mind / Samaritans", desc: "Emotional support and clinical guides.", url: "mind.org.uk · samaritans.org" },
+      { region: "Latin America", name: "ILGALAC", desc: "Regional coordinator with country resources.", url: "ilgalac.org" },
+      { region: "Europe", name: "ILGA-Europe", desc: "European rights and resources map.", url: "ilga-europe.org" },
+      { region: "Asia-Pacific", name: "APCOM", desc: "Regional LGBTI+ health and rights network.", url: "apcom.org" },
+      { region: "Africa", name: "UHAI EASHRI", desc: "Sexual and health-rights fund in East Africa.", url: "uhai-eashri.org" },
+    ],
+    crisisTitle: "If you are in crisis right now",
+    crisisText: "If you are thinking about harming yourself or ending your life, please call 024 (Spain) or your local emergency line. You don't have to explain it well. Just pick up.",
+  },
+  news: {
+    title: "News and reads",
+    subtitle: "Latest on BPD and mental health",
+    intro: "An automatic selection of recent headlines on borderline personality, mental health and bonds. Refreshed every six hours and stored on your device.",
+    refresh: "Refresh now",
+    refreshing: "Searching…",
+    lastUpdate: "Last update",
+    empty: "No headlines loaded yet.",
+    error: "Could not load live news. Showing a curated selection.",
+    source: "Source",
+    open: "Read",
+  },
+  a11y: {
+    title: "Accessibility",
+    open: "Open accessibility panel",
+    close: "Close",
+    contrast: "High contrast",
+    fontSize: "Text size",
+    reduceMotion: "Reduce motion",
+    skipSensitive: "Soften sensitive content",
+    dyslexia: "Dyslexia-friendly font",
+    reset: "Reset",
+  },
+};
