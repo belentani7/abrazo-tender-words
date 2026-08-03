@@ -1,18 +1,23 @@
 import { useState, ReactNode, useEffect, lazy, Suspense } from "react";
 import { useLang } from "@/hooks/useLang";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import useGsapAnimations from "@/hooks/useGsapAnimations";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import AccessibilityPanel from "@/components/AccessibilityPanel";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { SOSModal } from "@/components/SOSModal";
 import { AmbientBackground } from "@/components/AmbientBackground";
 import { MobileNav } from "@/components/MobileNav";
-import { Heart, BookOpen, Eye, Shield, MessageCircleHeart, Scale, Users, ChevronRight, Wind, Handshake, HelpCircle, BookOpenCheck, Flame, ArrowRight, Stethoscope, LifeBuoy, Library, Sparkles, AlertCircle } from "lucide-react";
+import { VirtualHugGenerator } from "@/components/VirtualHugGenerator";
+import { MoodTracker } from "@/components/MoodTracker";
+import { GSAPBreathingVisualizer } from "@/components/GSAPBreathingVisualizer";
+import { DiscreetCredit } from "@/components/DiscreetCredit";
+import { Heart, BookOpen, Eye, Shield, MessageCircleHeart, Scale, Users, ChevronRight, Wind, Handshake, HelpCircle, BookOpenCheck, Flame, ArrowRight, Stethoscope, LifeBuoy, Library, Sparkles, AlertCircle, Calendar } from "lucide-react";
 
 const Encyclopedia = lazy(() => import("@/components/Encyclopedia"));
 const AgentChat = lazy(() => import("@/components/AgentChat"));
 
-type Section = "home" | "understanding" | "signs" | "story" | "tools" | "boundaries" | "forBoth" | "whatIfMe" | "faq" | "glossary" | "farewell" | "community" | "young" | "tlpDolor" | "clinical" | "resources" | "agents" | "darkIntro" | "spectrum" | "darkTriad" | "tactics" | "attachment" | "profiles" | "redFlags" | "faqRel" | "protocol" | "darkClosing";
+type Section = "home" | "virtualHug" | "moodTracker" | "somaticBreathing" | "understanding" | "signs" | "story" | "tools" | "boundaries" | "forBoth" | "whatIfMe" | "faq" | "glossary" | "farewell" | "community" | "young" | "tlpDolor" | "clinical" | "resources" | "agents" | "darkIntro" | "spectrum" | "darkTriad" | "tactics" | "attachment" | "profiles" | "redFlags" | "faqRel" | "protocol" | "darkClosing";
 
 const Panel = ({ children, className = "", laser = false }: { children: ReactNode; className?: string; laser?: boolean }) => (
   <div className={`reveal hover-lift ${laser ? "glass-laser" : "glass"} laser-border rounded-3xl p-5 md:p-7 ${className}`}>
@@ -49,6 +54,7 @@ const Index = () => {
   };
 
   useScrollReveal(`${section}-${lang}`);
+  useGsapAnimations(section);
 
   useEffect(() => {
     document.title = `${t.header.title} — ${t.header.subtitle}`;
@@ -74,6 +80,10 @@ const Index = () => {
 
   const navItems: { id: Section; label: string; icon: ReactNode }[] = [
     { id: "home", label: t.nav.home, icon: <Heart className="w-3.5 h-3.5" /> },
+    { id: "virtualHug", label: "Abrazo Virtual & Cartas", icon: <Heart className="w-3.5 h-3.5 text-rose-400" /> },
+    { id: "agents", label: "Agentes IA (Sin API)", icon: <Sparkles className="w-3.5 h-3.5 text-primary" /> },
+    { id: "somaticBreathing", label: "Calma GSAP", icon: <Wind className="w-3.5 h-3.5" /> },
+    { id: "moodTracker", label: "Diario de Ánimo", icon: <Calendar className="w-3.5 h-3.5" /> },
     { id: "understanding", label: t.nav.understanding, icon: <BookOpen className="w-3.5 h-3.5" /> },
     { id: "signs", label: t.nav.signs, icon: <Eye className="w-3.5 h-3.5" /> },
     { id: "tools", label: t.nav.tools, icon: <Shield className="w-3.5 h-3.5" /> },
@@ -89,7 +99,6 @@ const Index = () => {
     { id: "tlpDolor", label: t.nav.tlpDolor || "Su dolor", icon: <Heart className="w-3.5 h-3.5" /> },
     { id: "clinical", label: t.nav.clinical || "Clínico", icon: <Stethoscope className="w-3.5 h-3.5" /> },
     { id: "resources", label: t.nav.resources || "Recursos", icon: <LifeBuoy className="w-3.5 h-3.5" /> },
-    { id: "agents", label: "Agentes IA", icon: <Sparkles className="w-3.5 h-3.5" /> },
   ];
 
   const darkNavItems: { id: Section; label: string }[] = crossed
@@ -775,15 +784,51 @@ const Index = () => {
           </div>
         )}
 
+        {/* ─── ABRAZO VIRTUAL & CARTAS ─── */}
+        {section === "virtualHug" && (
+          <div className="space-y-6">
+            <SectionTitle
+              kicker="01 / Sincrónico"
+              title="Experiencia de Abrazo Virtual & Cartas Tiernas"
+              subtitle="Sincroniza tu respiración, genera calor auditivo y envía tarjetas personalizadas de consuelo."
+            />
+            <VirtualHugGenerator />
+          </div>
+        )}
+
+        {/* ─── DIARIO & RASTREADOR DE ÁNIMO ─── */}
+        {section === "moodTracker" && (
+          <div className="space-y-6">
+            <SectionTitle
+              kicker="02 / Registro Privado"
+              title="Diario Emocional & Registro de Ánimo"
+              subtitle="Sigue la evolución de tus sentimientos con total privacidad local en tu dispositivo."
+            />
+            <MoodTracker />
+          </div>
+        )}
+
+        {/* ─── REGULACIÓN SOMÁTICA GSAP ─── */}
+        {section === "somaticBreathing" && (
+          <div className="space-y-6">
+            <SectionTitle
+              kicker="03 / Motor Kinetic"
+              title="Regulación Somática & Respiración Guiada"
+              subtitle="Animación fluida con motor GSAP para desescalar la ansiedad y activar la calma física."
+            />
+            <GSAPBreathingVisualizer />
+          </div>
+        )}
+
         {/* ─── AGENTES IA ─── */}
         {section === "agents" && (
           <div className="space-y-6">
             <SectionTitle
-              kicker="15 / Tecnología"
-              title="Agentes de IA"
-              subtitle="Tres agentes configurados para acompañarte, entrenar tu empatía y ensayar conversaciones difíciles. Educativos: no diagnostican ni sustituyen a un profesional."
+              kicker="04 / Tecnología Sin API"
+              title="Agentes de IA Especializados"
+              subtitle="Acompañantes inteligentes configurados con síntesis de empatía, desescalada y comunicación de bajo conflicto."
             />
-            <Suspense fallback={<div className="glass rounded-3xl border border-foreground/[0.06] h-96" />}>
+            <Suspense fallback={<div className="glass rounded-3xl border border-foreground/[0.06] h-96 flex items-center justify-center text-foreground/40 text-xs mono">Cargando motor de IA compasiva...</div>}>
               <AgentChat />
             </Suspense>
           </div>
@@ -1029,6 +1074,7 @@ const Index = () => {
               </a>
             ))}
           </nav>
+          <DiscreetCredit variant="footer" className="mt-6" />
         </div>
       </footer>
       <AccessibilityPanel />

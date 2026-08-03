@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 import { WIKI_DATA } from "../src/content/wiki-data";
 
-const BASE_URL = "https://tender-words-connect.lovable.app";
+const BASE_URL = process.env.SITE_URL || "https://abrazo.app";
 
 type Entry = { path: string; changefreq?: string; priority?: string };
 
