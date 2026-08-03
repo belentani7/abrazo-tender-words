@@ -81,7 +81,7 @@ Cambio visual sutil (tono más frío, tipografía mono más presente, mismo sist
 
 - **No 500 preguntas** — sería ruido. Haremos ~40-50 bien curadas. Si quieres más después, las añadimos por bloques.
 - **No diagnosticar** — todo el lenguaje será descriptivo y educativo, con disclaimers claros.
-- **No nombres ni detalles** — respetamos la indicación previa de no mencionar a Thiago.
+- **No nombres ni detalles personales** — todo el contenido es genérico, respetuoso e impersonal.
 
 ## Orden de ejecución
 
