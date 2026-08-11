@@ -9,7 +9,11 @@ const RelationCheck = () => {
 
   const toggle = (i: number) => {
     const next = new Set(marked);
-    next.has(i) ? next.delete(i) : next.add(i);
+    if (next.has(i)) {
+      next.delete(i);
+    } else {
+      next.add(i);
+    }
     setMarked(next);
   };
 

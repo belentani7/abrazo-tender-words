@@ -40,7 +40,7 @@ const BoundaryBuilder = () => {
     return lines.join(" ");
   }, [t, facts, feel, ask, gain, conseq]);
 
-  const usePreset = (p: (typeof PRESETS)[number]) => {
+  const applyPreset = (p: (typeof PRESETS)[number]) => {
     setFacts(p.facts);
     setFeel(p.feel);
     setAsk(p.ask);
@@ -64,7 +64,7 @@ const BoundaryBuilder = () => {
           {PRESETS.map((p) => (
             <button
               key={p.label}
-              onClick={() => usePreset(p)}
+              onClick={() => applyPreset(p)}
               className="press-spring rounded-full px-3 py-1.5 mono text-[10px] tracking-wider uppercase border border-foreground/10 text-foreground/50 hover:text-foreground/90 hover:border-primary/40 transition-all"
             >
               {p.label}
