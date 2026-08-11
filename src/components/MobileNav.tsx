@@ -2,7 +2,7 @@ import { Heart, Shield, BookOpen, AlertCircle, Library, Sparkles } from "lucide-
 
 interface MobileNavProps {
   currentSection: string;
-  onSelectSection: (section: any) => void;
+  onSelectSection: (section: "home" | "virtualHug" | "agents") => void;
   onOpenSOS: () => void;
   onOpenWiki: () => void;
 }
